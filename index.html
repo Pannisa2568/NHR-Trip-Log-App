@@ -1,42 +1,132 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>ระบบบันทึกการไปราชการ</title>
-  <link href="https://fonts.googleapis.com/css2?family=Prompt&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    function submitForm() {
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = "https://docs.google.com/forms/d/e/1FAIpQLSe2bgES3KRlgbRgXCH98s6onj1h_2PPDGrfofx1w91rbs2tqQ/formResponse";
+      form.target = "hidden_iframe";
+
+      const data = {
+        "entry.511106264": document.getElementById("fullname").value,
+        "entry.996525214": document.getElementById("position").value,
+        "entry.466501182": document.getElementById("department").value,
+        "entry.2135839748": document.getElementById("subject").value,
+        "entry.1160258534": document.getElementById("date").value,
+        "entry.772710380": document.getElementById("days").value,
+        "entry.413572869": document.getElementById("location").value,
+        "entry.2135839749": document.getElementById("organizer").value
+      };
+
+      for (let key in data) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = key;
+        input.value = data[key];
+        form.appendChild(input);
+      }
+
+      document.body.appendChild(form);
+      form.submit();
+
+      document.getElementById("submit-btn").style.backgroundColor = "#16a34a";
+      document.getElementById("ding").play();
+      const msg = document.createElement("div");
+      msg.innerText = "เจ้าหน้าที่ธุรการได้รับข้อมูลของท่านแล้ว ขอบคุณค่ะ";
+      msg.style = "position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:20px;border:3px solid #f97316;border-radius:12px;font-size:20px;color:black;z-index:9999;";
+      document.body.appendChild(msg);
+
+      setTimeout(() => {
+        msg.remove();
+        document.querySelector("form").reset();
+        document.getElementById("submit-btn").style.backgroundColor = "#dc2626";
+      }, 2000);
+    }
+  </script>
   <style>
-    body { font-family: 'Prompt', sans-serif; }
-    .form-box {
-      border: 2px solid #ff6600; /* orange */
+    body {
+      font-family: sans-serif;
+      background: white;
+      color: black;
+      margin: 0;
     }
-    .submit-button {
-      background-color: #dc2626; /* red */
+    header {
+      background: #047857;
+      color: white;
+      text-align: center;
+      padding: 1rem;
     }
-    .submit-button.submitted {
-      background-color: #16a34a !important; /* green */
+    header img {
+      width: 150px;
+      margin-bottom: 10px;
+    }
+    main {
+      max-width: 700px;
+      margin: auto;
+      padding: 1rem;
+    }
+    .form-container {
+      border: 3px solid #f97316;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+    label span {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+    }
+    button {
+      background: #dc2626;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      width: 100%;
+      border-radius: 0.75rem;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.875rem;
+      color: #9ca3af;
+      margin: 2rem 0;
     }
   </style>
 </head>
-<body class="bg-green-100 text-black">
+<body>
+  <!-- Sound Effect -->
+  <audio id="ding" src="https://cdn.pixabay.com/audio/2023/03/07/audio_254774b19e.mp3" preload="auto"></audio>
+
   <!-- Header -->
-  <header class="text-center py-6 bg-green-600 text-white">
-    <img src="https://lh4.googleusercontent.com/Wg9o9hrUZx9L4PMce-qv5Yg3y_rEEyAHXhAz0bMfzoifzZo_MNDFfMz-yX7cdVHFlgbU8B12n1AkUzXYUKHsfo_bVMmRrMQOhtraNP9xICGzvHiIwial-Xp-iw8Rt4eSGw=w1280"
-         alt="โลโก้โรงเรียน"
-         class="mx-auto mb-4 w-32">
-    <h1 class="text-2xl font-semibold">ระบบบันทึกการไปราชการของบุคลากรโรงเรียนบ้านหนองหัวแรด</h1>
+  <header>
+    <img src="https://lh4.googleusercontent.com/Wg9o9hrUZx9L4PMce-qv5Yg3y_rEEyAHXhAz0bMfzoifzZo_MNDFfMz-yX7cdVHFlgbU8B12n1AkUzXYUKHsfo_bVMmRrMQOhtraNP9xICGzvHiIwial-Xp-iw8Rt4eSGw=w1280" alt="โลโก้โรงเรียน">
+    <h1>ระบบบันทึกการไปราชการของบุคลากรโรงเรียนบ้านหนองหัวแรด</h1>
   </header>
 
   <!-- Form -->
-  <main class="max-w-3xl mx-auto p-4">
-    <form id="tripForm" class="bg-green-50 shadow-md rounded-xl p-6 space-y-4 form-box">
-      <!-- Inputs: Use same IDs from your original snippet -->
-      <label class="block">
-        <span>ชื่อ-สกุล</span>
-        <select id="fullname" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-          <option disabled selected>-- เลือกชื่อ --</option>
+  <main>
+    <div class="form-container">
+      <form onsubmit="event.preventDefault(); submitForm();">
+        <label>
+          <span>ชื่อ-สกุล</span>
+          <select id="fullname" required>
+            <option disabled selected>-- เลือกชื่อ --</option>
           <option>นายสืบพงษ์ ทัพหลวง</option>
           <option>นางสาวสุพรรษา ดวงกระโทก</option>
           <option>นางกมลวัลย์ รัตนกุล</option>
@@ -86,25 +176,24 @@
           <option>MISTER.JUN-JUN  TENEDERO</option>
           <option>MISS.MARY JEAN Q BELUAN</option>
 
-        </select>
-      </label>
-
-      <label class="block">
-        <span>ตำแหน่ง</span>
-        <select id="position" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-          <option disabled selected>-- เลือกตำแหน่ง --</option>
+          </select>
+        </label>
+        <label>
+          <span>ตำแหน่ง</span>
+          <select id="position" required>
+            <option disabled selected>-- เลือกตำแหน่ง --</option>
           <option>ผู้อำนวยการโรงเรียน</option>
           <option>รองผู้อำนวยการโรงเรียน</option>
           <option>ครู</option>
           <option>ครูอัตราจ้าง</option>
           <option>อื่นๆ</option>
-        </select>
-      </label>
 
-      <label class="block">
-        <span>กลุ่มสาระการเรียนรู้</span>
-        <select id="department" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-          <option disabled selected>-- เลือกกลุ่มสาระ --</option>
+          </select>
+        </label>
+        <label>
+          <span>กลุ่มสาระการเรียนรู้</span>
+          <select id="department" required>
+            <option disabled selected>-- เลือกกลุ่มสาระ --</option>
           <option>ภาษาไทย</option>
           <option>คณิตศาสตร์</option>
           <option>วิทยาศาสตร์และเทคโนโลยี</option>
@@ -114,42 +203,38 @@
           <option>การงานอาชีพ</option>
           <option>ภาษาต่างประเทศ</option>
 
-        </select>
-      </label>
-
-      <label class="block">
-        <span>เรื่องที่ไปราชการ</span>
-        <input type="text" id="subject" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-      </label>
-
-      <label class="block">
-        <span>วันที่ไป</span>
-        <input type="date" id="date" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-      </label>
-
-      <label class="block">
-        <span>จำนวนวัน</span>
-        <input type="number" id="days" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-      </label>
-
-      <label class="block">
-        <span>สถานที่</span>
-        <input type="text" id="location" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-      </label>
-
-      <label class="block">
-        <span>หน่วยงานที่จัด</span>
-        <input type="text" id="organizer" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
-      </label>
-
-      <button type="submit" class="submit-button text-white font-bold py-2 px-4 rounded-xl w-full transition-all">
-        บันทึกข้อมูล
-      </button>
-    </form>
+          </select>
+        </label>
+        <label>
+          <span>เรื่องที่ไปราชการ</span>
+          <input type="text" id="subject" required>
+        </label>
+        <label>
+          <span>วันที่ไป</span>
+          <input type="date" id="date" required>
+        </label>
+        <label>
+          <span>จำนวนวัน</span>
+          <input type="number" id="days" required>
+        </label>
+        <label>
+          <span>สถานที่</span>
+          <input type="text" id="location" required>
+        </label>
+        <label>
+          <span>หน่วยงานที่จัด</span>
+          <input type="text" id="organizer" required>
+        </label>
+        <button type="submit" id="submit-btn">บันทึกข้อมูล</button>
+      </form>
+    </div>
   </main>
 
-  <footer class="text-center text-gray-400 text-sm mt-10 mb-4">
+  <!-- Footer -->
+  <footer>
     © 2025 ระบบบันทึกข้อมูลไปราชการ โดย Kru-onnz Zaa
   </footer>
+
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
 </body>
 </html>
