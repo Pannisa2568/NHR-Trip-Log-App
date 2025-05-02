@@ -8,7 +8,7 @@
     function submitForm() {
       const form = document.createElement("form");
       form.method = "POST";
-      form.action = "https://docs.google.com/forms/d/e/1FAIpQLSe2bgES3KRlgbRgXCH98s6onj1h_2PPDGrfofx1w91rbs2tqQ/viewform?usp=pp_url&entry.511106264=%E0%B8%99%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%B2%E0%B8%A7%E0%B8%9B%E0%B8%B1%E0%B8%8D%E0%B8%93%E0%B8%B4%E0%B8%A8%E0%B8%B2++%E0%B8%81%E0%B8%B2%E0%B8%8D%E0%B8%88%E0%B8%99%E0%B9%8C%E0%B8%AD%E0%B8%99%E0%B8%B8%E0%B8%81%E0%B8%B9%E0%B8%A5&entry.996525214=%E0%B8%84%E0%B8%A3%E0%B8%B9&entry.466501182=%E0%B8%A7%E0%B8%B4%E0%B8%97%E0%B8%A2%E0%B8%B2%E0%B8%A8%E0%B8%B2%E0%B8%AA%E0%B8%95%E0%B8%A3%E0%B9%8C%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%80%E0%B8%97%E0%B8%84%E0%B9%82%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%A2%E0%B8%B5&entry.1160258534=2025-05-02&entry.772710380=1&entry.2135839748=aaa&entry.413572869=aaa";
+      form.action = "https://docs.google.com/forms/d/e/1FAIpQLSe2bgES3KRlgbRgXCH98s6onj1h_2PPDGrfofx1w91rbs2tqQ/formResponse";
       form.target = "hidden_iframe";
 
       const data = {
@@ -127,25 +127,82 @@
           <span>ชื่อ-สกุล</span>
           <select id="fullname" required>
             <option disabled selected>-- เลือกชื่อ --</option>
-            <option>นายสืบพงษ์ ทัพหลวง</option>
-            <!-- ... more options as provided ... -->
-            <option>MISS.MARY JEAN Q BELUAN</option>
+          <option>นายสืบพงษ์ ทัพหลวง</option>
+          <option>นางสาวสุพรรษา ดวงกระโทก</option>
+          <option>นางกมลวัลย์ รัตนกุล</option>
+           <option>นางสาวปัญณิศา  กาญจน์อนุกูล</option>
+          <option>นางสาวสุดาณิษา  ปัทมสกุลชัย</option>
+          <option>นางนวรัตน์  ทิศกระโทก</option>
+          <option>นางสาวพวงผกา  มะสีผา</option>
+          <option>นางสาวพันนิภา  ดาผา</option>
+          <option>นางสาวศิริกานดา  ภิรักษ์ศักดิ์</option>
+          <option>นางสาวเพ็ญนภา  อรรถมนัดถุ์</option>
+          <option>นางสาวบัณฑิตา  เพิ่มพิบูลย์</option>
+          <option>นางสาววรรนิภา  มั่งมูล</option>
+          <option>นางสาวเพ็ญทิวา  โฉมงาม</option>
+          <option>นายภูบดินทร์  หาญกลาง</option>
+          <option>นางสาวจริยา  แผนพิมาย</option>
+          <option>นางสาวจุฑาพร  ตลับทอง</option>
+          <option>นางสาวจิราพร   อ้อมนอก</option>
+          <option>นางสาวณัชชา  ซึมกระโทก</option>
+          <option>นางอาภัสรา  ดวงกระโทก</option>
+          <option>นางสาวภาวิณี  อาษาวัง</option>
+          <option>นางสาวกมลพรรณ  ตั้นสูงเนิน</option>
+          <option>นางสาวสุวรรณา  คลุ้มกระโทก</option>
+          <option>นางสาวลลิตา  โมงกระโทก</option>
+          <option>นางสาวพริ้มเพรา  มุ่งกลาง</option>
+          <option>นางสาวสิริทิพย์  สอนกิ่ง</option>
+          <option>นางสาวปทิตตา  สิทธิจันทร์</option>
+          <option>นายธนานนท์   ตะคอนรัมย์</option>
+          <option>นางสาวณิชกานต์   อุพลรัมย์</option>
+          <option>นายอภิวุฒิ   พรมมาสิม</option>
+          <option>นายสิริคุปต์   ฉอุ่มผล</option>
+          <option>นางสาวกัญญารัตน์   จอมคำสิงห์</option>
+          <option>นางสาวญาณิศา   การรุ่งเรือง</option>
+          <option>นางสาววิมลศิริ   กรุยกระโทก</option>
+          <option>นางสาวชุลีพร   เลิศนา</option>
+          <option>นางสาวธันยพร   มูลกระโทก</option>
+          <option>นางสาวปานชนก   บุตรน้ำรัก</option>
+          <option>นางสาวสุภาพร   แซ่หาญ</option>
+          <option>นางสาวสุนิสา   เกิ้นโนนกอก</option>
+          <option>นางสาวกรภัทร์  สมจิต</option>
+          <option>นางสาวกัญญาวีร์  ชุติมานุตสกุล</option>
+          <option>นายธวัชชัย   พรมพาน</option>
+          <option>นางสาวประณยา  เรียนไธสง</option>
+          <option>นางสาวอุมาพร  จิมมอญ</option>
+          <option>นางสาววนิดา  ชัยปลัด</option>
+          <option>นายภานุวัฒน์ วงศ์ละคร </option>
+          <option>นายรชตภูมิ  ปัตตังเว</option>
+          <option>MISTER.JUN-JUN  TENEDERO</option>
+          <option>MISS.MARY JEAN Q BELUAN</option>
+
           </select>
         </label>
         <label>
           <span>ตำแหน่ง</span>
           <select id="position" required>
             <option disabled selected>-- เลือกตำแหน่ง --</option>
-            <option>ครู</option>
-            <!-- ... -->
+          <option>ผู้อำนวยการโรงเรียน</option>
+          <option>รองผู้อำนวยการโรงเรียน</option>
+          <option>ครู</option>
+          <option>ครูอัตราจ้าง</option>
+          <option>อื่นๆ</option>
+
           </select>
         </label>
         <label>
           <span>กลุ่มสาระการเรียนรู้</span>
           <select id="department" required>
             <option disabled selected>-- เลือกกลุ่มสาระ --</option>
-            <option>ภาษาไทย</option>
-            <!-- ... -->
+          <option>ภาษาไทย</option>
+          <option>คณิตศาสตร์</option>
+          <option>วิทยาศาสตร์และเทคโนโลยี</option>
+          <option>สังคมศึกษา</option>
+          <option>สุขศึกษาและพลศึกษา</option>
+          <option>ศิลปะ</option>
+          <option>การงานอาชีพ</option>
+          <option>ภาษาต่างประเทศ</option>
+
           </select>
         </label>
         <label>
