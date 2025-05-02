@@ -177,7 +177,7 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const formData = new FormData(form);
-      const url = "https://docs.google.com/forms/d/e/1FAIpQLSe2bgES3KRlgbRgXCH98s6onj1h_2PPDGrfofx1w91rbs2tqQ/formResponse";
+      const url = "https://docs.google.com/forms/d/e/1FAIpQLSfRkgrRo7RdoQY-XXvKAFx3qET87IAbobnwYR8kGUJJMkdzbA/formResponse";
 
       await fetch(url, {
         method: "POST",
@@ -187,7 +187,7 @@
 
       // Feedback
       ding.play();
-      alert("เจ้าหน้าที่ธุรการได้รับข้อมูลของท่านแล้ว ขอบคุณค่ะ");
+      alert("ได้รับข้อมูลของท่านแล้ว ขอบคุณค่ะ");
       submitBtn.style.backgroundColor = "green";
       submitBtn.textContent = "ส่งข้อมูลสำเร็จ";
 
