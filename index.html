@@ -5,12 +5,12 @@
   <title>ระบบบันทึกการไปราชการ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script>
-    function submitForm() {
-      const form = document.createElement("form");
-      form.method = "POST";
-      form.action = "https://docs.google.com/forms/d/e/1FAIpQLSe2bgES3KRlgbRgXCH98s6onj1h_2PPDGrfofx1w91rbs2tqQ/formResponse";
-      form.target = "1ynNGiV7RfUjaE1dN-Rg9ge-THj_xFthorQ6TFxF6PFM";
+  <!-- Sound Effect -->
+  <audio id="ding" src="https://cdn.pixabay.com/audio/2023/03/07/audio_254774b19e.mp3" preload="auto"></audio>
 
+  <h1>NHR Statis 2568</h1>
+  <form id="nhrForm" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLSe2bgES3KRlgbRgXCH98s6onj1h_2PPDGrfofx1w91rbs2tqQ/formResponse" target="hidden_iframe" onsubmit="handleSubmit()">
+    
       const data = {
         "entry.511106264": document.getElementById("fullname").value,
         "entry.996525214": document.getElementById("position").value,
