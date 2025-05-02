@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>บันทึกสถิตินักเรียน</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #fff;
+      color: #000;
+      padding: 2rem;
+      margin: 0;
+    }
+    h1 {
+      text-align: center;
+      color: #000;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      border: 2px solid orange;
+      padding: 1.5rem;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    select, input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 2px solid orange;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: red;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button.sent {
+      background-color: green;
+    }
+    #thankyou {
+      text-align: center;
+      margin-top: 1rem;
+      color: green;
+      font-size: 1.2rem;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>แบบบันทึกสถิตินักเรียน NHR School 2568</h1>
+  <form id="nhrForm" method="POST" action="https://docs.google.com/forms/d/e/1FAIpQLScIozo9wi774bgxMN6-ZJz5hqcOOQr5qFjJQixnnVKVydx-dQ/formResponse" target="hidden_iframe" onsubmit="return handleSubmit()">
+    
+    <label for="room">ชั้น/ห้อง</label>
+    <select name="entry.522842455" required>
+      <option value="">-- เลือกชั้น/ห้อง --</option>
+      <option>อนุบาล 2/1</option>
+      <option>อนุบาล 2/2</option>
+      <option>อนุบาล 2/3</option>
+      <option>อนุบาล 3/1</option>
+      <option>อนุบาล 3/2</option>
+      <option>อนุบาล 3/3</option>
+      <option>อนุบาล 3/4</option>
+      <option>ป.1/1</option>
+      <option>ป.1/2</option>
+      <option>ป.1/3</option>
+      <option>ป.1/4</option>
+      <option>ป.2/1</option>
+      <option>ป.2/2</option>
+      <option>ป.2/3</option>
+      <option>ป.2/4</option>
+      <option>ป.3/1</option>
+      <option>ป.3/2</option>
+      <option>ป.3/3</option>
+      <option>ป.3/4</option>
+      <option>ป.4/1</option>
+      <option>ป.4/2</option>
+      <option>ป.4/3</option>
+      <option>ป.4/4</option>
+      <option>ป.5/1</option>
+      <option>ป.5/2</option>
+      <option>ป.5/3</option>
+      <option>ป.5/4</option>
+      <option>ป.5/5</option>
+      <option>ป.6/1</option>
+      <option>ป.6/2</option>
+      <option>ป.6/3</option>
+      <option>ป.6/4</option>
+      <option>ป.6/5</option>
+    </select>
+
+    <label>จำนวนนักเรียนชาย 👦🏻 ที่มาเรียน</label>
+    <input type="number" name="entry.446341418" min="0" value="0" required />
+
+    <label>จำนวนนักเรียนหญิง 👧 ที่มาเรียน</label>
+    <input type="number" name="entry.1572431820" min="0" value="0" required />
+
+    <label>จำนวนนักเรียนชาย 👦🏻 ที่ป่วย</label>
+    <input type="number" name="entry.932967472" min="0" value="0" required />
+
+    <label>จำนวนนักเรียนชาย 👦🏻 ที่ลา</label>
+    <input type="number" name="entry.1558724961" min="0" value="0" required />
+
+    <label>จำนวนนักเรียนชาย 👦🏻 ที่ขาด</label>
+    <input type="number" name="entry.1652164491" min="0" value="0" required />
+
+    <label>จำนวนนักเรียนหญิง 👧 ที่ป่วย</label>
+    <input type="number" name="entry.878207052" min="0" value="0" required />
+
+    <label>จำนวนนักเรียนหญิง 👧 ที่ลา</label>
+    <input type="number" name="entry.1277963062" min="0" value="0" required />
+
+    <label>จำนวนนักเรียนหญิง 👧 ที่ขาด</label>
+    <input type="number" name="entry.2011543549" min="0" value="0" required />
+
+    <button type="submit" id="submitBtn">ส่งข้อมูล</button>
+  </form>
+
+  <div id="thankyou">ขอบคุณสำหรับการลงข้อมูลในวันนี้</div>
+
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+  <audio id="ding" src="https://www.soundjay.com/buttons/sounds/button-3.mp3" preload="auto"></audio>
+
+  <script>
+    function handleSubmit() {
+      const form = document.getElementById("nhrForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const thankYou = document.getElementById("thankyou");
+      const ding = document.getElementById("ding");
+
+      setTimeout(() => {
+        submitBtn.classList.add("sent");
+        ding.play();
+        thankYou.style.display = "block";
+        form.reset();
+        const inputs = form.querySelectorAll("input[type='number']");
+        inputs.forEach(i => i.value = 0);
+        submitBtn.innerText = "ส่งข้อมูล";
+        setTimeout(() => {
+          submitBtn.classList.remove("sent");
+          thankYou.style.display = "none";
+        }, 5000);
+      }, 1000);
+
+      return true;
+    }
+  </script>
+</body>
+</html>
